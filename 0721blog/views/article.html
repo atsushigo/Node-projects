@@ -1,0 +1,41 @@
+<%- include('header.html')  -%>
+<div class="container mt-4">
+    <nav>
+        <ol class="breadcrumb bg-white">
+            <li class="breadcrumb-item"><a href="/">首頁</a></li>
+            <li class="breadcrumb-item"><a href="/article/list/<%=article.category_id%>">類目名稱</a></li>
+            <li class="breadcrumb-item active">文章標題</li>
+        </ol>
+    </nav>
+    <div class="card content">
+        <div class="card-header bg-white">
+            <h3 class="card-title m-0">文章標題</h3>
+            <p class="text-muted small mt-2 m-0">
+                <span class="mr-3">發表時間：</span>
+                <span class="mr-1">點擊：</span>
+            </p>
+        </div>
+        <div class="card-body">文章內容</div>
+        <div class="card-footer bg-white border-0">
+            <span class="badge badge-pill">標籤1</span>
+			<span class="badge badge-pill">標籤2</span>
+			<span class="badge badge-pill">標籤3</span>
+			<span class="badge badge-pill">標籤4</span>
+			<span class="badge badge-pill">標籤5</span>
+			<span class="badge badge-pill">標籤6</span>
+        </div>
+    </div>
+    <nav>
+        <ul class="pagination mt-3">
+			
+            <li class="page-item">
+                <a class="page-link" href="/article/id">上一篇：上一篇名稱</a>
+            </li>
+			
+            <li class="page-item ml-auto">
+                <a class="page-link" href="/article/id">下一篇：下一篇名稱</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<%- include('footer.html')  -%>

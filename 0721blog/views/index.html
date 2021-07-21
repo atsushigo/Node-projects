@@ -1,0 +1,69 @@
+<%- include('header.html')  -%>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR53LPvaJUUPPa3u0WyIsa6C65Bt5Nf4hX4Vw&usqp=CAU" height="280" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR53LPvaJUUPPa3u0WyIsa6C65Bt5Nf4hX4Vw&usqp=CAU" height="280" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR53LPvaJUUPPa3u0WyIsa6C65Bt5Nf4hX4Vw&usqp=CAU" height="280" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">熱門推薦</h2>
+    <div class="card-deck">
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrYHQCFoqaFED1OA0chqq08R6QQ7UYTeP8XA&usqp=CAU" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrYHQCFoqaFED1OA0chqq08R6QQ7UYTeP8XA&usqp=CAU" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">推薦文章名稱 </h5>
+                <p class="card-text"><small class="text-muted">推薦文章時間</small></p>
+                <p class="card-text">推薦文章內容...</p>
+            </div>
+            <div class="card-footer bg-white border-0">
+                <a href="/article/id" class="btn btn-primary float-right stretched-link">查看詳情</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">最新文章</h2>
+    <div class="row row-cols-4">
+
+        <div class="col my-3">
+            <div class="card h-100">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFU7U2h0umyF0P6E_yhTX45sGgPEQAbGaJ4g&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">文章標題</h5>
+                    <p class="card-text"><small class="text-muted">文章時間</small></p>
+                    <p class="card-text">文章內容...</p>
+                    <a href="/article/id" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<%- include('footer.html')  -%>
