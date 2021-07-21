@@ -28,19 +28,19 @@
 <div class="container mt-5">
     <h2 class="mb-4">熱門推薦</h2>
     <div class="card-deck">
-
+		<% hots.forEach(hot => { %>
         <div class="card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrYHQCFoqaFED1OA0chqq08R6QQ7UYTeP8XA&usqp=CAU" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrYHQCFoqaFED1OA0chqq08R6QQ7UYTeP8XA&usqp=CAU" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">推薦文章名稱 </h5>
-                <p class="card-text"><small class="text-muted">推薦文章時間</small></p>
-                <p class="card-text">推薦文章內容...</p>
+                <h5 class="card-title"><%= hot.title%></h5>
+                <p class="card-text"><small class="text-muted"><%= hot.time%></small></p>
+                <p class="card-text"><%= hot.content%>...</p>
             </div>
             <div class="card-footer bg-white border-0">
                 <a href="/article/id" class="btn btn-primary float-right stretched-link">查看詳情</a>
             </div>
         </div>
-
+		<% }) %>
     </div>
 </div>
 
