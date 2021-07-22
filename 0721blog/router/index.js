@@ -3,9 +3,11 @@ const express = require("express")
 const article = require("../middleware/article.js")
 const indexApp = express()
 
-indexApp.get("/",[article.getHot],(req,res)=>{
+indexApp.get("/",[article.getHot,article.getList],(req,res)=>{
+	let {hots,articles} = req
 	res.render("index",{
-		hots:req.hots,
+		articles:articles,
+		hots:hots,
 	})
 })
 

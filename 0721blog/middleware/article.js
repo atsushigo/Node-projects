@@ -11,5 +11,16 @@ module.exports = {
 			//把錯誤用到index去接收
 			next(err)
 		})
+	},
+	//獲取最新文章
+	getList:(req,res,next)=>{
+		Article.getList().then(results=>{
+			console.log(results)
+			req.articles = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
 	}
 }

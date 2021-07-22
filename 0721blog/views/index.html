@@ -47,19 +47,19 @@
 <div class="container mt-5">
     <h2 class="mb-4">最新文章</h2>
     <div class="row row-cols-4">
-
+		<% articles.forEach(article => { %>
         <div class="col my-3">
             <div class="card h-100">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFU7U2h0umyF0P6E_yhTX45sGgPEQAbGaJ4g&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">文章標題</h5>
-                    <p class="card-text"><small class="text-muted">文章時間</small></p>
-                    <p class="card-text">文章內容...</p>
+                    <h5 class="card-title"><%= article.title %></h5>
+                    <p class="card-text"><small class="text-muted"><%= article.time.toLocaleString() %></small></p>
+                    <p class="card-text"><%= article.content.replace(/<[^>]+>/g,' ').substring(0,100) %>...</p>
                     <a href="/article/id" class="stretched-link"></a>
                 </div>
             </div>
         </div>
-
+		<% }) %>
     </div>
 </div>
 

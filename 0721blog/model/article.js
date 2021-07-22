@@ -12,4 +12,17 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//獲取文章列表
+	static getList(){
+		return new Promise((resolve,reject)=>{
+			let sql = "Select id,title,content,time From article ORDER BY time DESC"
+			this.query(sql).then(results=>{
+				resolve(results)
+			}).catch(err=>{
+				console.log("獲取文章列表失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }
