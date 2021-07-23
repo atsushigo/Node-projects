@@ -6,11 +6,12 @@ const article = require("../middleware/article.js")
 //headers導航欄要傳值 所以要引入 導航欄需要的頁面資料
 const category = require("../middleware/category.js")
 
-articleApp.get("/list/:id", [article.getListByCategoryId, category.getCategory], (req, res) => {
-	let {articles, categories} = req
+articleApp.get("/list/:id", [article.getListByCategoryId, category.getCategory,category.getCategoryNameById], (req, res) => {
+	let {articles, categories,category} = req
 	res.render("list", {
 		articles: articles,
-		categories: categories
+		categories: categories,
+		category:category
 	})
 })
 
