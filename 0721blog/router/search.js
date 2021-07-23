@@ -13,6 +13,7 @@ searchApp.get("/", [article.getListByKeyword,category.getCategory], (req, res) =
 	res.render("search", {
 		articles: articles,
 		categories: categories,
+		keyword:req.query.keyword
 	})
 })
 

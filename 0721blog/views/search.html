@@ -1,7 +1,7 @@
 <%- include('header.html')  -%>
 
 <div class="container mt-5">
-    <h2 class="mb-4">搜索結果（搜索詞：keyword ）</h2>
+    <h2 class="mb-4">搜索結果（搜索詞：<%= keyword %> ）</h2>
     <div class="row row-cols-4">
 		<% articles.forEach(article => { %>
         <div class="col my-3">
@@ -11,7 +11,7 @@
                     <h5 class="card-title"><%= article.title %></h5>
                     <p class="card-text"><small class="text-muted"><%= article.time.toLocaleString() %></small></p>
                     <p class="card-text"><%= article.content.replace(/<[^>]+>/g,'').substring(0,100) %>...</p>
-                    <a href="/article/id" class="stretched-link"></a>
+                    <a href="/article/<%= article.id %>" class="stretched-link"></a>
                 </div>
             </div>
         </div>
