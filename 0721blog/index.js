@@ -11,6 +11,8 @@ app.use(express.static("static"))
 //調用首頁router
 app.use("/",require("./router/index"))
 app.use("/index",require("./router/index"))
+//調用article list頁 router
+app.use("/article",require("./router/article.js"))
 
 app.listen(3000,()=>{
 	console.log("跑在3000")

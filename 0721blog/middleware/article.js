@@ -22,5 +22,19 @@ module.exports = {
 			//把錯誤用到index去接收
 			next(err)
 		})
+	},
+	
+	//獲取指定種類下文章
+	getListByCategoryId:(req,res,next)=>{
+		//從url獲取參數 EX: /article/list/1
+		let id = req.params.id
+		Article.getListByCategoryId(id).then(results=>{
+			console.log(results)
+			req.articles = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
 	}
 }

@@ -3,18 +3,19 @@
 <div class="container mt-5">
     <h2 class="mb-4">當前欄目：欄目種類名</h2>
     <div class="row row-cols-4">
+		<% articles.forEach(article=>{ %>
         <div class="col my-3">
             <div class="card h-100">
                 <img src="https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">文章標題</h5>
-                    <p class="card-text"><small class="text-muted">文章時間</small></p>
-                    <p class="card-text">文章內容...</p>
+                    <h5 class="card-title"><%= article.title %></h5>
+                    <p class="card-text"><small class="text-muted"><%= article.time.toLocaleString() %></small></p>
+                    <p class="card-text"><%= article.content.replace(/<[^>]+>/g,' ').substring(0,100) %>...</p>
                     <a href="/article/<%=article.id%>" class="stretched-link"></a>
                 </div>
             </div>
         </div>
-
+		<% }) %>
     </div>
 </div>
 
