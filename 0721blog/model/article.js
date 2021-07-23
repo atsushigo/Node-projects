@@ -38,4 +38,18 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//search 獲取指定關鍵詞的文章列表
+	static getListByKeyword(keyword){
+		return new Promise((resolve,reject)=>{
+			let sql = "SELECT id,title,content,time FROM article WHERE title LIKE ? ORDER BY time DESC"
+			this.query(sql,"%"+keyword+"%").then(results=>{
+				console.log(results)
+				resolve(results)
+			}).catch(err=>{
+				console.log("獲取文章列表失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

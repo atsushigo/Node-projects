@@ -13,6 +13,8 @@ app.use("/",require("./router/index"))
 app.use("/index",require("./router/index"))
 //調用article list頁 router
 app.use("/article",require("./router/article.js"))
+//搜索頁
+app.use("/search",require("./router/search.js"))
 
 app.listen(3000,()=>{
 	console.log("跑在3000")

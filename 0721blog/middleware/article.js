@@ -36,5 +36,18 @@ module.exports = {
 			//把錯誤用到index去接收
 			next(err)
 		})
+	},
+	
+	//獲取指定關鍵詞的文章
+	getListByKeyword:(req,res,next)=>{
+		let keyword = req.query.keyword
+		Article.getListByKeyword(keyword).then(results=>{
+			console.log(results)
+			req.articles = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
 	}
 }
