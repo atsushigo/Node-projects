@@ -69,7 +69,7 @@ module.exports = class Article extends require('./model'){
 	//獲取上一篇文章頁面詳情
 	static getPrevArticle(id){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT id,title FROM article WHERE id < ? ORDER BY id LIMIT 1"
+			let sql = "SELECT id,title FROM article WHERE id < ? ORDER BY id DESC LIMIT 1"
 			this.query(sql,id).then(results=>{
 				resolve(results[0])
 			}).catch(err=>{

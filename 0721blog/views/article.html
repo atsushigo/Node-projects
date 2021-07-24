@@ -16,11 +16,11 @@
             </p>
         </div>
         <div class="card-body"><%- article.content%></div>
-		<% tabs.forEach(tab=>{ %>
         <div class="card-footer bg-white border-0">
-            <span class="badge badge-pill"><%= tab.name%></span>
+			<% tabs.forEach(tab=>{ %>
+            <span class="badge badge-warning"><%= tab.name%></span>
+			<% }) %>
         </div>
-		<% }) %>
     </div>
     <nav>
         <ul class="pagination mt-3">
