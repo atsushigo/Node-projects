@@ -27,6 +27,13 @@ app.use("/search",require("./router/search.js"))
 //登入頁
 app.use("/login",require("./router/login.js"))
 
+//登出後頁面 (傳給它一個msg)
+app.get("/user/logout",(req,res)=>{
+	req.session = null
+	res.render("login",{
+		msg:"登出成功"
+	})
+})
 app.listen(3000,()=>{
 	console.log("跑在3000")
 })
