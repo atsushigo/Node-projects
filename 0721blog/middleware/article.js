@@ -1,5 +1,5 @@
 const Article = require("../model/article.js")
-
+const Tab = require('../model/tab.js')
 module.exports = {
 	//獲取熱門文章
 	getHot: (req,res,next)=>{
@@ -58,5 +58,17 @@ module.exports = {
 			//把錯誤用到index去接收
 			next(err)
 		})
-	}
+	},
+	
+	//獲取article頁下方標籤
+	getTab:(req,res,next)=>{
+		let id = req.params.id
+		Tab.getTab(id).then(results=>{
+			req.tabs = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

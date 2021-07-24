@@ -18,7 +18,6 @@ module.exports = class Category extends require('./model'){
 		return new Promise((resolve,reject)=>{
 			let sql = "SELECT id,`name` FROM category WHERE id=?"
 			this.query(sql,id).then(results=>{
-				console.log(results)
 				resolve(results[0])
 			}).catch(err=>{
 				console.log("獲取單一筆文章種類名稱失敗:"+err.message)

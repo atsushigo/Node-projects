@@ -18,11 +18,12 @@ articleApp.get("/list/:id", [article.getListByCategoryId, category.getCategory,c
 })
 
 //文章詳情頁
-articleApp.get("/:id",[category.getCategory,article.getArticleById],(req, res) => {
-	let {categories,article} = req
+articleApp.get("/:id",[category.getCategory,article.getArticleById,article.getTab],(req, res) => {
+	let {categories,article,tabs} = req
 	res.render("article", {
 		categories: categories,
-		article:article
+		article:article,
+		tabs:tabs
 	})
 })
 
