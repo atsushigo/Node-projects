@@ -1,11 +1,18 @@
 const express = require("express")
 const app = express()
 
+//引入session
+const session = require("cookie-session")
 //模板引擎配置 用ejs渲染html 這樣就不用後綴改名成ejs檔
 app.set("view engine","html")
 app.set("views")
 app.engine("html",require("ejs").renderFile)
 
+//配置session
+app.use(session({
+	keys:["我是加密字串"],
+	maxAge: 1000*60*30
+}))
 //配置post
 app.use(express.urlencoded({ extended: true }) )
 //靜態資源配置

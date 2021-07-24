@@ -12,6 +12,9 @@ loginApp.post("/",(req,res)=>{
 	let {username,password} = req.body
 	User.login(username,password).then(result=>{
 		if(result){
+			//session存取
+			//console.log(result)   { id: 1, username: 'admin' }
+			req.session.user = result
 			res.redirect("/")
 		}else{
 			res.render("login",{
