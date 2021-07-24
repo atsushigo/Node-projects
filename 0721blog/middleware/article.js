@@ -71,4 +71,28 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//獲取上一篇文章
+	getPrevArticle:(req,res,next)=>{
+		let id = req.params.id
+		Article.getPrevArticle(id).then(results=>{
+			req.prev = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
+	
+	//獲取下一篇文章
+	getNextArticle:(req,res,next)=>{
+		let id = req.params.id
+		Article.getNextArticle(id).then(results=>{
+			req.next = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }
