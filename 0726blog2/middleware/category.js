@@ -23,4 +23,15 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//獲取總種類數
+	countTotalCategory:(req,res,next)=>{
+		Category.countTotalCategory().then(results=>{
+			req.categoryCount = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

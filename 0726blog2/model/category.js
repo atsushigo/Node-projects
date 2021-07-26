@@ -25,4 +25,17 @@ module.exports = class Category extends require('./model'){
 			})
 		})
 	}
+	
+	//獲取總種類數
+	static countTotalCategory(){
+		return new Promise((resolve,reject)=>{
+			let sql = "SELECT COUNT(id) AS count FROM category"
+			this.query(sql).then(results=>{
+				resolve(results[0].count)
+			}).catch(err=>{
+				console.log("獲取總種類數:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

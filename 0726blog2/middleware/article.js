@@ -95,4 +95,15 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//獲取總文章數
+	countTotalArticle:(req,res,next)=>{
+		Article.countTotalArticle().then(results=>{
+			req.articleCount = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }
