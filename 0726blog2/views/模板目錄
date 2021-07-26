@@ -1,0 +1,15 @@
+存放模板文件
+admin資料夾存放第二階段頁面（後台）裡面的
+
+A: account 帳戶管理頁 
+
+B: article 有
+	1.add.html 發表文章 
+	2.edit.html 編輯文章 
+	3.index.html 文章列表
+
+C: category 種類管理頁
+
+D: log 查看日誌頁
+
+E: index 個人中心主頁
