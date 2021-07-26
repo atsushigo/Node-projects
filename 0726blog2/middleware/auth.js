@@ -4,5 +4,15 @@ module.exports = {
 	getUser:(req,res,next)=>{
 		req.user = req.session.user
 		next()
+	},
+	//中間件判斷用戶是否登入，訪問後台權限
+	allowToAdmin:(req,res,next)=>{
+		let user = req.session.user
+		if(user){
+			req.user = user
+			next()
+		}else{
+			res.redirect("/login")
+		}
 	}
 }

@@ -16,7 +16,7 @@ app.use(session({
 //配置post
 app.use(express.urlencoded({ extended: true }) )
 //靜態資源配置
-app.use(express.static("static"))
+app.use("/static",express.static("./static"))
 //調用首頁router
 app.use("/",require("./router/index"))
 app.use("/index",require("./router/index"))
@@ -26,6 +26,10 @@ app.use("/article",require("./router/article.js"))
 app.use("/search",require("./router/search.js"))
 //登入頁
 app.use("/login",require("./router/login.js"))
+//後台首頁
+//後台權限驗證中間件
+app.use("/admin",require("./middleware/auth.js").allowToAdmin)
+app.use("/admin",require("./router/admin/index.js"))
 
 //登出後頁面 (傳給它一個msg)
 app.get("/user/logout",(req,res)=>{
