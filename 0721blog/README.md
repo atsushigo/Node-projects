@@ -12,4 +12,4 @@ npm i ejs
 npm i mysql
 npm i nodemon
 
-![image]()
+![image](https://github.com/sam921611/Node-projects/blob/master/0721blog/screenshots/blog1.gif)
