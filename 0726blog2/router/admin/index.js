@@ -15,8 +15,14 @@ indexApp.get('/',[user.lastLoginTime,pv.getTotal,article.countTotalArticle,categ
 		visit:visit,
 		articleCount:articleCount,
 		categoryCount:categoryCount,
-		
 	})
+})
+
+indexApp.get("/getdata",pv.getVisitTrend,(req,res)=>{
+	let {visitTrend} = req
+	let data = {}
+	data.data = visitTrend
+	res.json(data)
 })
 
 module.exports = indexApp

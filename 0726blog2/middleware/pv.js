@@ -9,5 +9,16 @@ module.exports = {
 		}).catch(err=>{
 			next(err)
 		})
+	},
+	
+	//獲取全部訪問量做成趨勢圖表
+	
+	getVisitTrend:(req,res,next)=>{
+		PV.getVisitTrend().then(results=>{
+			req.visitTrend = JSON.stringify(results)
+			next()
+		}).catch(err=>{
+			next(err)
+		})
 	}
 }
