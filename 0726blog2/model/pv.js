@@ -6,7 +6,6 @@ module.exports = class PV extends require('./model'){
 			let sql = "SELECT SUM(hits) AS total FROM pv"
 			this.query(sql).then(results=>{
 				//這邊可以console.log(results) 和 console.log(results[0]) 看差別 [] 和 undefined
-				console.log(results)
 				resolve(results[0].total)
 			}).catch(err=>{
 				console.log("獲取訪問量失敗")
@@ -24,7 +23,6 @@ module.exports = class PV extends require('./model'){
 			this.query(sql).then(results=>{
 				//這邊可以console.log(results) 和 console.log(results[0]) 看差別 [] 和 undefined
 				//返回數組
-				console.log(results)
 				resolve(results)
 			}).catch(err=>{
 				console.log("獲取訪問量做成趨勢圖表失敗")

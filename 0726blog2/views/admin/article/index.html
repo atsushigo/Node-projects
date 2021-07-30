@@ -50,7 +50,7 @@
                                         <input type="submit" value="篩選" class="btn btn-primary btn-sm">
                                     </div>
                                     <div class="form-group ml-auto">
-                                        <a href="./add.html" class="btn btn-danger btn-sm">發表文章</a>
+                                        <a href="/admin/article/add" class="btn btn-danger btn-sm">發表文章</a>
                                     </div>
                                 </form>
                                 <table class="table table-hover text-center">
@@ -64,126 +64,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+										<% page.list.forEach(article => { %>
                                         <tr>
-                                            <th>1</th>
-                                            <td>標題一</td>
+                                            <th><%= article.id %></th>
+                                            <td><%= article.title %></td>
                                             <td>
+												<!-- 如果有縮圖就顯示 不然不顯示 -->
+												<% if(article.thumbnail) {%>
                                                 <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
+                                                    data-content="<img src='<%= article.thumbnail %>'>"></i>
+												<% } %>
                                             </td>
                                             <td>
                                                 <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot1">
+                                                    <input type="checkbox" class="custom-control-input" id="hot1" <%= article.hot?"checked":"" %> >
                                                     <label class="custom-control-label" for="hot1"></label>
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="./edit.html" class="text-primary" title="編輯"><i
+                                                <a href="/admin/article/edit" class="text-primary" title="編輯"><i
                                                         class="iconfont icon-bianji"></i>編輯</a>
                                                 <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
                                                     title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <td>標題二</td>
-                                            <td>
-                                                <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot2">
-                                                    <label class="custom-control-label" for="hot2"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="./edit.html" class="text-primary" title="编辑"><i
-                                                        class="iconfont icon-bianji"></i>編輯</a>
-                                                <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
-                                                    title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <td>標題三</td>
-                                            <td>
-                                                <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot3">
-                                                    <label class="custom-control-label" for="hot3"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="./edit.html" class="text-primary" title="編輯"><i
-                                                        class="iconfont icon-bianji"></i>編輯</a>
-                                                <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
-                                                    title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>4</th>
-                                            <td>標題四</td>
-                                            <td>
-                                                <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot3">
-                                                    <label class="custom-control-label" for="hot3"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="./edit.html" class="text-primary" title="編輯"><i
-                                                        class="iconfont icon-bianji"></i>編輯</a>
-                                                <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
-                                                    title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>5</th>
-                                            <td>標題五</td>
-                                            <td>
-                                                <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot3">
-                                                    <label class="custom-control-label" for="hot3"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="./edit.html" class="text-primary" title="編輯"><i
-                                                        class="iconfont icon-bianji"></i>編輯</a>
-                                                <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
-                                                    title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>6</th>
-                                            <td>標題六</td>
-                                            <td>
-                                                <i class="iconfont icon-photo" data-toggle="popover"
-                                                    data-content="<img src='../static/img/logo.png'>"></i>
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="hot3">
-                                                    <label class="custom-control-label" for="hot3"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="./edit.html" class="text-primary" title="編輯"><i
-                                                        class="iconfont icon-bianji"></i>編輯</a>
-                                                <a href="#" onclick="return confirm('確定刪除？')" class="text-danger"
-                                                    title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
-                                            </td>
-                                        </tr>
+                                        <% }) %>
                                     </tbody>
                                 </table>
                                 <nav class="d-flex justify-content-between border-top pt-3 px-3">

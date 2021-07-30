@@ -44,7 +44,6 @@ module.exports = class Article extends require('./model'){
 		return new Promise((resolve,reject)=>{
 			let sql = "SELECT id,title,content,time FROM article WHERE title LIKE ? ORDER BY time DESC"
 			this.query(sql,"%"+keyword+"%").then(results=>{
-				console.log(results)
 				resolve(results)
 			}).catch(err=>{
 				console.log("獲取文章列表失敗:"+err.message)
@@ -98,6 +97,20 @@ module.exports = class Article extends require('./model'){
 			let sql = "SELECT COUNT(id) AS count FROM article"
 			this.query(sql).then(results=>{
 				resolve(results[0].count)
+			}).catch(err=>{
+				console.log("獲取總文章數失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
+	
+	//獲取後台文章列表 (做分頁功能) 即指定頁
+	static getPage(){
+		return new Promise((resolve,reject)=>{
+			let sql = "SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC"
+			this.query(sql).then(results=>{
+				console.log(results)
+				resolve(results)
 			}).catch(err=>{
 				console.log("獲取總文章數失敗:"+err.message)
 				reject(err)

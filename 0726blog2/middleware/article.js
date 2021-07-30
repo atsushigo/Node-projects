@@ -106,4 +106,15 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//獲取後台文章列表 (做分頁功能) 即指定頁
+	getPage:(req,res,next)=>{
+		Article.getPage().then(results=>{
+			req.pageList = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }
