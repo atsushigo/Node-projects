@@ -109,7 +109,8 @@ module.exports = {
 	
 	//獲取後台文章列表 (做分頁功能) 即指定頁
 	getPage:(req,res,next)=>{
-		Article.getPage().then(results=>{
+		//兩個參數 透過res從model層傳過來
+		Article.getPage(res.start,res.size).then(results=>{
 			req.pageList = results
 			next()
 		}).catch(err=>{

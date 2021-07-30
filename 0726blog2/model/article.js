@@ -105,11 +105,16 @@ module.exports = class Article extends require('./model'){
 	}
 	
 	//獲取後台文章列表 (做分頁功能) 即指定頁
-	static getPage(){
+	//直接撈全部資料不分頁: getPage() 然後 sql參數不LIMIT就好 SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC
+	//撈分頁資料:getPage(page.p,size)
+	//分頁邏輯(這邊以每頁五筆資料示範) 
+	//第一頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 0,5 
+	//第二頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 5,5 
+	//第三頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 10,5 
+	static getPage(start,size){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC"
-			this.query(sql).then(results=>{
-				console.log(results)
+			let sql = "SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT ?,?"
+			this.query(sql,[start,size]).then(results=>{
 				resolve(results)
 			}).catch(err=>{
 				console.log("獲取總文章數失敗:"+err.message)
