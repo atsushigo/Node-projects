@@ -30,7 +30,14 @@ app.use("/login",require("./router/login.js"))
 //後台權限驗證中間件
 app.use("/admin",require("./middleware/auth.js").allowToAdmin)
 app.use("/admin",require("./router/admin/index.js"))
-
+//後台文章管理
+app.use("/admin/article",require("./router/admin/article.js"))
+//後台種類管理
+app.use("/admin/category",require("./router/admin/category.js"))
+//後台log日誌
+app.use("/admin/log",require("./router/admin/log.js"))
+//後台帳戶管理
+app.use("/admin/account",require("./router/admin/account.js"))
 //登出後頁面 (傳給它一個msg)
 app.get("/user/logout",(req,res)=>{
 	req.session = null
