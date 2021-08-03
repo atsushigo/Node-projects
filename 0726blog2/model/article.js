@@ -127,8 +127,8 @@ module.exports = class Article extends require('./model'){
 			//加上篩選條件分頁語句
 			let sql = "SELECT id,title,thumbnail,hot FROM article WHERE 1=1 "
 			
-			sql += category_id != -1 && category_id ? "AND category_id"+"="+category_id : ""
-			sql += hot != -1 && hot ? "AND hot = "+hot : ""
+			sql += category_id != -1 && category_id ? " AND category_id"+"="+category_id : ""
+			sql += hot != -1 && hot ? " AND hot = "+hot : ""
 			
 			sql += " ORDER BY time DESC LIMIT ?,?"
 			this.query(sql,[start,size]).then(results=>{

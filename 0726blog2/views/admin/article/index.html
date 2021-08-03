@@ -35,7 +35,7 @@
                                         <select name="category_id" id="category" class="form-control-sm">
                                             <option value="-1">全部</option>
 											<% categories.forEach(category => { %>
-                                            <option value="<%= category.id %>"><%= category.name %></option>
+                                            <option value="<%= category.id %>" <%= category.id==category_id? "selected": "" %> ><%= category.name %></option>
 											<% }) %>
                                         </select>
                                     </div>
@@ -43,8 +43,8 @@
                                         <label for="hot">熱門：</label>
                                         <select name="hot" id="hot" class="form-control-sm">
                                             <option value="-1">全部</option>
-                                            <option value="1">熱門</option>
-                                            <option value="0">非熱門</option>
+                                            <option value="1" <%= hot==1? "selected": "" %> >熱門</option>
+                                            <option value="0" <%= hot==0? "selected": "" %> >非熱門</option>
                                         </select>
                                     </div>
                                     <div class="from-group ml-3">
@@ -96,13 +96,13 @@
                                     <div class="align-self-center">共 <%= page.count %> 條 / 共 <%= page.total %> 頁 / 第 <%= page.p %> 頁</div>
                                     <ul class="pagination mb-0">
 										<% if(page.p != 1) { %>
-                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= page.p-1 %>">上一頁</a></li>
+                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= page.p-1 %>&category_id=<%= category_id %>&hot=<%= hot %>">上一頁</a></li>
 										<% } %>
 										<% for(let index = 1; index <= page.total; index++) { %>
-                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= index %>"><%= index %></a></li>
+                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= index %>&category_id=<%= category_id %>&hot=<%= hot %>"><%= index %></a></li>
 										<% } %>
 										<% if(page.p != page.total) { %>
-                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= page.p+1 %>">下一頁</a></li>
+                                        <li class="page-item"><a class="page-link" href="/admin/article?p=<%= page.p+1 %>&category_id=<%= category_id %>&hot=<%= hot %>">下一頁</a></li>
 										<% } %>
                                     </ul>
                                 </nav>

@@ -38,11 +38,14 @@ articleApp.get("/",[article.countTotalArticle],(req,res,next)=>{
 	//抓到參數後開始渲染本頁指定資料
 	let { user,pageList,page,categories } = req
 	page.list = pageList
+	let { category_id,hot } = req.query
 	res.render("admin/article/index",{
 		//因為在最上面header右上方要顯示使用者名稱
 		user:user,
 		page:page,
-		categories:categories
+		categories:categories,
+		category_id:category_id,
+		hot:hot
 	})
 })
 
