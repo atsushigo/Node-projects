@@ -3,6 +3,7 @@ const articleApp = express()
 //這邊是 http://localhost:3000/admin
 //引入後台 article頁的 中間件
 const article = require("../../middleware/article.js")
+const category = require("../../middleware/category.js")
 articleApp.get("/",[article.countTotalArticle],(req,res,next)=>{
 	//注意點:邏輯是 先拿頁面參數算現在在 第幾頁,頁固定幾個資料  然後next呼叫article.getPage函數渲染
 	let {articleCount} = req
@@ -27,19 +28,21 @@ articleApp.get("/",[article.countTotalArticle],(req,res,next)=>{
 	req.page.p = req.page.p < 1 ? 1 : req.page.p
 	//console.log(req.page.p)
 	//往中間件傳參調用方法
+	//必須把參數掛載res傳給下一個中間件當function參數
 	res.start = (req.page.p - 1) * size
 	res.size = size
 	
 	next()
 	
-},article.getPage,(req,res)=>{
+},[article.getPage,category.getCategory],(req,res)=>{
 	//抓到參數後開始渲染本頁指定資料
-	let { user,pageList,page } = req
+	let { user,pageList,page,categories } = req
 	page.list = pageList
 	res.render("admin/article/index",{
 		//因為在最上面header右上方要顯示使用者名稱
 		user:user,
 		page:page,
+		categories:categories
 	})
 })
 

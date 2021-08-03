@@ -27,23 +27,24 @@
                                 <h6 class="mb-0 align-self-center">文章列表</h6>
                             </div>
                             <div class="card-body">
-                                <form action="./index.html" class="form-inline mb-3" method="get">
+                                <form action="/admin/article" class="form-inline mb-3" method="get">
+									<!-- 文章管理頁的隱藏的輸入框 -->
+									<input type="hidden" name="p" value="<%= page.p %>">
                                     <div class="form-group">
                                         <label for="category">種類：</label>
-                                        <select name="category" id="category" class="form-control-sm">
-                                            <option value="0">全部</option>
-                                            <option value="1">種類一</option>
-                                            <option value="1">種類二</option>
-                                            <option value="1">種類三</option>
-                                            <option value="1">種類四</option>
+                                        <select name="category_id" id="category" class="form-control-sm">
+                                            <option value="-1">全部</option>
+											<% categories.forEach(category => { %>
+                                            <option value="<%= category.id %>"><%= category.name %></option>
+											<% }) %>
                                         </select>
                                     </div>
                                     <div class="form-group ml-3">
                                         <label for="hot">熱門：</label>
                                         <select name="hot" id="hot" class="form-control-sm">
-                                            <option value="0">全部</option>
+                                            <option value="-1">全部</option>
                                             <option value="1">熱門</option>
-                                            <option value="2">非熱門</option>
+                                            <option value="0">非熱門</option>
                                         </select>
                                     </div>
                                     <div class="from-group ml-3">

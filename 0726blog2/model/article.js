@@ -92,9 +92,15 @@ module.exports = class Article extends require('./model'){
 	}
 	
 	//獲取總文章數
-	static countTotalArticle(){
+	//countTotalArticle()這函數呼叫後返回 
+	//1.該篩選條件(category_id,hot)(即種類名以及是否為熱搜) 有條件的總文章數
+	//2.如果沒傳參-> countTotalArticle() 則希望返回的      沒有任何條件的總文章數
+	//這邊先練習用SQL拼接，之後要解決一下SQL注入問題
+	static countTotalArticle(category_id,hot){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT COUNT(id) AS count FROM article"
+			let sql = "SELECT COUNT(id) AS count FROM article WHERE 1=1 "
+			sql += category_id != -1 && category_id ? "AND category_id"+"="+category_id : ""
+			sql += hot != -1 && hot ? " AND hot = "+hot : ""
 			this.query(sql).then(results=>{
 				resolve(results[0].count)
 			}).catch(err=>{
@@ -111,10 +117,22 @@ module.exports = class Article extends require('./model'){
 	//第一頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 0,5 
 	//第二頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 5,5 
 	//第三頁語句SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT 10,5 
-	static getPage(start,size){
+	//這邊分頁過後還有分類跟是否是熱搜的篩選邏輯，所以參數是getPage(start,size,category_id,hot)
+	//1.篩選條件(category_id,hot)(即種類名以及是否為熱搜) 有條件的撈資料
+	//2.撈分頁資料:(page.p,size)
+	static getPage(start,size,category_id,hot){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT ?,?"
+			//一般撈分頁語句
+			// let sql = "SELECT id,title,thumbnail,hot FROM article ORDER BY time DESC LIMIT ?,?"
+			//加上篩選條件分頁語句
+			let sql = "SELECT id,title,thumbnail,hot FROM article WHERE 1=1 "
+			
+			sql += category_id != -1 && category_id ? "AND category_id"+"="+category_id : ""
+			sql += hot != -1 && hot ? "AND hot = "+hot : ""
+			
+			sql += " ORDER BY time DESC LIMIT ?,?"
 			this.query(sql,[start,size]).then(results=>{
+				console.log(results)
 				resolve(results)
 			}).catch(err=>{
 				console.log("獲取總文章數失敗:"+err.message)

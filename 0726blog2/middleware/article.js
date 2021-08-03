@@ -98,7 +98,7 @@ module.exports = {
 	
 	//獲取總文章數
 	countTotalArticle:(req,res,next)=>{
-		Article.countTotalArticle().then(results=>{
+		Article.countTotalArticle(req.query.category_id,req.query.hot).then(results=>{
 			req.articleCount = results
 			next()
 		}).catch(err=>{
@@ -110,7 +110,7 @@ module.exports = {
 	//獲取後台文章列表 (做分頁功能) 即指定頁
 	getPage:(req,res,next)=>{
 		//兩個參數 透過res從model層傳過來
-		Article.getPage(res.start,res.size).then(results=>{
+		Article.getPage(res.start,res.size,req.query.category_id,req.query.hot).then(results=>{
 			req.pageList = results
 			next()
 		}).catch(err=>{
