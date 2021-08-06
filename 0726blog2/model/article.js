@@ -140,4 +140,17 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//article頁面設置hot值 0或1
+	static setHot(id,hot){
+		return new Promise((resolve,reject)=>{
+			let sql = "UPDATE article SET hot = ? WHERE id = ?"
+			this.query(sql,[hot,id]).then(results=>{
+				resolve(results)
+			}).catch(err=>{
+				console.log("獲取熱門失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

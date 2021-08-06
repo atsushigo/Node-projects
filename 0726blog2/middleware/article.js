@@ -118,4 +118,17 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//設置熱門推薦
+	setHot:(req,res,next)=>{
+		//這邊參數是從url取 querystring
+		let { id,hot } = req.query
+		Article.setHot(id,hot).then(results=>{
+			req.affectedRows = results.affectedRows
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

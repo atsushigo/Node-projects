@@ -63,5 +63,9 @@ articleApp.get("/category",(req,res)=>{
 	})
 })
 
+articleApp.get("/sethot",article.setHot,(req,res)=>{
+	if(req.affectedRows > 0) return  res.json({code:1,message:"設置熱門成功"})
+	res.json({code:0,message:"設置熱門失敗"})
+})
 
 module.exports = articleApp
