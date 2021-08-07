@@ -3,6 +3,12 @@ const app = express()
 
 //引入session
 const session = require("cookie-session")
+//引入cors
+const cors = require("cors")
+//配置post  後台才可以拿到資料
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 //模板引擎配置 用ejs渲染html 這樣就不用後綴改名成ejs檔
 app.set("view engine","html")
 app.set("views")
@@ -13,8 +19,9 @@ app.use(session({
 	keys:["我是加密字串"],
 	maxAge: 1000*60*30
 }))
-//配置post
-app.use(express.urlencoded({ extended: true }) )
+
+//開cors
+app.use(cors())
 //靜態資源配置
 app.use("/static",express.static("./static"))
 //調用首頁router

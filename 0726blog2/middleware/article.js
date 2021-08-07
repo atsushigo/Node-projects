@@ -131,4 +131,27 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//添加文章
+	add:(req,res,next)=>{
+		//POST過來的資料包裝成article對象
+		const {title,content,hot,category_id} = req.body
+		
+		const article = {
+			title:title,
+			content:content,
+			hot:hot?1:0,
+			category_id:category_id,
+			thumbnail:req.uploadUrl? req.uploadUrl:null
+		}
+		console.log(article)
+		//直接把對象傳到model層
+		 Article.add(article).then(results=>{
+		 	req.insertId = results
+		 	next()
+		 }).catch(err=>{
+		 	//把錯誤用到index去接收
+		 	next(err)
+		 })
+	},
 }

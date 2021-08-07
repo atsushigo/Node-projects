@@ -54,8 +54,22 @@ articleApp.get("/add",category.getCategory,(req,res)=>{
 	let { categories,user } = req
 	res.render("admin/article/add",{
 		//因為在最上面header右上方要顯示使用者名稱
+		//這邊傳code是因為添加成功或失敗返回的值想顯示在客戶端 先做處理
+		code:"",
 		categories:categories,
 		user:req.user
+	})
+})
+
+//add頁面post表單
+articleApp.post("/add",article.add,category.getCategory,(req,res)=>{
+	let { categories,user } = req
+	if(req.insertId) return res.render("admin/article/add",{code:1,categories:categories,user:req.user,article:article})
+	return res.render("admin/article/add",{
+			//因為在最上面header右上方要顯示使用者名稱
+			code:0,
+			categories:categories,
+			user:req.user
 	})
 })
 

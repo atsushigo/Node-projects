@@ -153,4 +153,20 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//add頁面
+	//傳過來是article對象 添加文章
+	static add(article){
+		return new Promise((resolve,reject)=>{
+			//這邊要注意 node mysql可以簡寫成 set ? 把article對象加入就好
+			let sql = "INSERT INTO article SET ?"
+			this.query(sql,article).then(results=>{
+				//返回生成的值id
+				resolve(results.insertId)
+			}).catch(err=>{
+				console.log("添加文章失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }
