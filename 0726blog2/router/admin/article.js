@@ -73,6 +73,12 @@ articleApp.post("/add",article.add,category.getCategory,(req,res)=>{
 	})
 })
 
+// ckeditor 上傳
+articleApp.post("/ckeditor",(req,res)=>{
+	if(req.uploadUrl) return res.json({uploaded:true,url:req.uploadurl})
+	return res.json({uploaded:false,err:{message:"上傳失敗"}})
+})
+
 articleApp.get("/category",(req,res)=>{
 	res.render("admin/category/index",{
 		//因為在最上面header右上方要顯示使用者名稱
