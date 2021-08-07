@@ -49,9 +49,12 @@ articleApp.get("/",[article.countTotalArticle],(req,res,next)=>{
 	})
 })
 
-articleApp.get("/add",(req,res)=>{
+//顯示添加文章頁面
+articleApp.get("/add",category.getCategory,(req,res)=>{
+	let { categories,user } = req
 	res.render("admin/article/add",{
 		//因為在最上面header右上方要顯示使用者名稱
+		categories:categories,
 		user:req.user
 	})
 })
@@ -59,7 +62,7 @@ articleApp.get("/add",(req,res)=>{
 articleApp.get("/category",(req,res)=>{
 	res.render("admin/category/index",{
 		//因為在最上面header右上方要顯示使用者名稱
-		user:req.user
+		user:req.user,
 	})
 })
 
