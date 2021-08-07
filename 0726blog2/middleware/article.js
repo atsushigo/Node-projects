@@ -154,4 +154,17 @@ module.exports = {
 		 	next(err)
 		 })
 	},
+	
+	//刪除文章
+	del:(req,res,next)=>{
+		//這邊參數是從url取 querystring
+		let { id } = req.query
+		Article.del(id).then(results=>{
+			req.affectedRows = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	}
 }

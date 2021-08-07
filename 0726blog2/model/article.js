@@ -169,4 +169,19 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//文章頁面刪除功能
+	static del(id){
+		return new Promise((resolve,reject)=>{
+			//這邊要注意 node mysql可以簡寫成 set ? 把article對象加入就好
+			let sql = "DELETE FROM article where id = ?"
+			this.query(sql,id).then(results=>{
+				//返回生成的值id
+				resolve(results.affectedRows)
+			}).catch(err=>{
+				console.log("刪除文章失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

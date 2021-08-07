@@ -61,6 +61,12 @@ articleApp.get("/add",category.getCategory,(req,res)=>{
 	})
 })
 
+//刪除文章功能
+articleApp.get("/del",article.del,(req,res)=>{
+	if(req.affectedRows > 0) return  res.json({code:1,message:"刪除文章成功"})
+	res.json({code:0,message:"刪除文章失敗"})
+})
+
 //add頁面post表單
 articleApp.post("/add",article.add,category.getCategory,(req,res)=>{
 	let { categories,user } = req
@@ -86,6 +92,7 @@ articleApp.get("/category",(req,res)=>{
 	})
 })
 
+//設置熱門checkbox
 articleApp.get("/sethot",article.setHot,(req,res)=>{
 	if(req.affectedRows > 0) return  res.json({code:1,message:"設置熱門成功"})
 	res.json({code:0,message:"設置熱門失敗"})
