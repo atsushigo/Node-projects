@@ -67,6 +67,17 @@ articleApp.get("/del",article.del,(req,res)=>{
 	res.json({code:0,message:"刪除文章失敗"})
 })
 
+//edit編輯文章頁面
+articleApp.get("/edit/:id",[category.getCategory,article.getArticleById],(req,res)=>{
+	let {user,categories,article} = req
+	res.render("admin/article/edit",{
+		//因為在最上面header右上方要顯示使用者名稱
+		categories:categories,
+		user:user,
+		article:article,
+	})
+})
+
 //add頁面post表單
 articleApp.post("/add",article.add,category.getCategory,(req,res)=>{
 	let { categories,user } = req

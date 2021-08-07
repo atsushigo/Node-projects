@@ -55,11 +55,11 @@ module.exports = class Article extends require('./model'){
 	//獲取指定文章頁面詳情
 	static getArticleById(id){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT a.id,a.content,a.title,a.time,a.hits,a.category_id,c.name FROM article a, category c WHERE a.id = ? AND a.category_id = c.id"
+			let sql = "SELECT a.id,a.content,a.title,a.time,a.hits,a.category_id,a.thumbnail,a.hot,c.name FROM article a, category c WHERE a.id = ? AND a.category_id = c.id"
 			this.query(sql,id).then(results=>{
 				resolve(results[0])
 			}).catch(err=>{
-				console.log("獲取文章列表失敗:"+err.message)
+				console.log("獲取指定文章失敗:"+err.message)
 				reject(err)
 			})
 		})

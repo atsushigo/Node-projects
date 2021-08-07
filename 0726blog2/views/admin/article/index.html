@@ -37,7 +37,7 @@
                                         <select name="category_id" id="category" class="form-control-sm">
                                             <option value="-1">全部</option>
 											<% categories.forEach(category => { %>
-                                            <option value="<%= category.id %>" <%= category.id==category_id? "selected": "" %> ><%= category.name %></option>
+                                            <option value="<%= category.id %>" <%= category.name %> ><%= category.name %></option>
 											<% }) %>
                                         </select>
                                     </div>
@@ -84,7 +84,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="/admin/article/edit" class="text-primary" title="編輯"><i
+                                                <a :href="'/admin/article/edit/'+item.id" class="text-primary" title="編輯"><i
                                                         class="iconfont icon-bianji"></i>編輯</a>
                                                 <a href="#" @click="del(item.id)" class="text-danger"
                                                     title="刪除"><i class="iconfont icon-delete"></i>刪除</a>
