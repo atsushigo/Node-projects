@@ -37,42 +37,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+										<% categories.forEach(category=>{ %>
                                         <tr>
-                                            <th>1</th>
-                                            <td title="雙擊修改"><input type="text" name="name" value="種類1"
+                                            <th><%= category.id %></th>
+                                            <td title="雙擊修改"><input type="text" name="name" value="<%= category.name %>"
                                                     class="form-control text-center bg-white border-0 dbcedit" onchange="sub_name(1,this.value)" disabled>
                                             </td>
-                                            <td title="雙擊修改"><input type="text" name="index" value="1"
+                                            <td title="雙擊修改"><input type="text" name="index" value="<%= category.index %>"
                                                     class="form-control text-center bg-white border-0 dbcedit" disabled>
                                             </td>
                                             <td>
                                                 <button class="btn btn-link text-danger" onclick="del(1)"><i class="iconfont icon-delete"></i>刪除</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <td title="雙擊修改"><input type="text" name="name" value="種類2"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
-                                            </td>
-                                            <td title="雙擊修改"><input type="text" name="index" value="1"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-link text-danger" onclick="del(1)"><i class="iconfont icon-delete"></i>刪除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <td title="雙擊修改"><input type="text" name="name" value="種類3"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
-                                            </td>
-                                            <td title="雙擊修改"><input type="text" name="index" value="1"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-link text-danger" onclick="del(1)"><i class="iconfont icon-delete"></i>刪除</button>
-                                            </td>
-                                        </tr>
+										<% }) %>
                                     </tbody>
                                     <tfoot>
                                         <tr>

@@ -3,7 +3,7 @@ module.exports = class Category extends require('./model'){
 	//獲取文章種類列表
 	static getCategory(){
 		return new Promise((resolve,reject)=>{
-			let sql = "SELECT id,`name` FROM category ORDER BY `index` DESC"
+			let sql = "SELECT id,`name`,`index` FROM category ORDER BY `index` DESC"
 			this.query(sql).then(results=>{
 				resolve(results)
 			}).catch(err=>{

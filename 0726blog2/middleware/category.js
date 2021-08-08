@@ -1,7 +1,7 @@
 const Category = require("../model/category.js")
 
 module.exports = {
-	//獲取最新文章
+	//獲取種類列表文章
 	getCategory:(req,res,next)=>{
 		Category.getCategory().then(results=>{
 			req.categories = results

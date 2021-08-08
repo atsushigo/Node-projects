@@ -1,9 +1,13 @@
 const express = require("express")
 const categoryApp = express()
 
-categoryApp.get("/",(req,res)=>{
+const category = require("../../middleware/category.js")
+
+categoryApp.get("/",category.getCategory,(req,res)=>{
+	let {categories,user} = req
 	res.render("admin/category/index",{
-		user:req.user
+		user:user,
+		categories:categories
 	})
 })
 
