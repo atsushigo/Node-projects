@@ -27,7 +27,7 @@
                                 <h6 class="mb-0 align-self-center">編輯文章</h6>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/article/edit" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/article/edit" method="POST" enctype="application/x-www-form-urlencoded">
 									<!-- 隱藏區域 提交時帶article.id用的 -->
 									<input type="hidden" name="id" value="<%= article.id %>">
                                     <div class="form-row">
@@ -67,7 +67,7 @@
                                         <div class="col-8">
                                             <input type="file" class="d-none" id="customFile" name="upload"
                                                 accept="image/*">
-												<input type="hidden" ref="thumbnail" name="thumbnail" value="article.thumbnail" >
+												<input type="hidden" ref="thumbnail" name="thumbnail" :value="article.thumbnail" >
                                             <label for="customFile" class="position-relative">
 												<!-- 圖片位置就是後台傳來的縮圖地址 -->
                                                 <img src="<%= article.thumbnail %>" data-src="holder.js/200x200?text=點擊上傳"

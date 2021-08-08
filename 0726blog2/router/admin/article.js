@@ -67,7 +67,7 @@ articleApp.get("/del",article.del,(req,res)=>{
 	res.json({code:0,message:"刪除文章失敗"})
 })
 
-//edit編輯文章頁面
+//獲取edit編輯文章頁面
 articleApp.get("/edit/:id",[category.getCategory,article.getArticleById],(req,res)=>{
 	let {user,categories,article} = req
 	res.render("admin/article/edit",{
@@ -77,6 +77,18 @@ articleApp.get("/edit/:id",[category.getCategory,article.getArticleById],(req,re
 		article:article,
 	})
 })
+
+//更新(發post)edit編輯文章頁面
+articleApp.post("/edit",[article.edit],(req,res)=>{
+	if(req.affectedRows > 0) return res.render("admin/alert",{code:true,title:"成功提示",message:"文章編輯成功",url:"/admin/article/"})
+	res.render("admin/alert",{
+		code:false,
+		title:"失敗提示",
+		message:"文章編輯失敗",
+		url:"/admin/article/edit/"+req.body.id,
+	})
+})
+
 
 //add頁面post表單
 articleApp.post("/add",article.add,category.getCategory,(req,res)=>{

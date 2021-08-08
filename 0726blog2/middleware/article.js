@@ -166,5 +166,26 @@ module.exports = {
 			//把錯誤用到index去接收
 			next(err)
 		})
-	}
+	},
+	
+	//編輯文章
+	edit:(req,res,next)=>{
+		//這邊參數是從url取 querystring
+		let { title,content,hot,category_id,thumbnail,id } = req.body
+		let article = {
+			title:title,
+			content:content,
+			hot:hot?1:0,
+			category_id:category_id,
+			thumbnail:req.uploadUrl?req.uploadUrl:thumbnail,//有值代表用戶有上傳 用戶沒上傳的話就用原本的值
+			id:id
+		}
+		Article.edit(article).then(results=>{
+			req.affectedRows = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

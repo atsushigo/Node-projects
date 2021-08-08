@@ -184,4 +184,19 @@ module.exports = class Article extends require('./model'){
 			})
 		})
 	}
+	
+	//編輯文章
+	static edit(article){
+		return new Promise((resolve,reject)=>{
+			//arrticle解構，部份更新
+			let sql = "UPDATE article SET title = ?,content = ?, hot = ?, category_id = ?, thumbnail = ? WHERE id = ?"
+			this.query(sql,[article.title,article.content,article.hot,article.category_id,article.thumbnail,article.id]).then(results=>{
+				//返回生成的值id
+				resolve(results.affectedRows)
+			}).catch(err=>{
+				console.log("編輯文章失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }
