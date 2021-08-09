@@ -34,4 +34,16 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	addCategory:(req,res,next)=>{
+		//post過來的name index
+		let { name,index } = req.body
+		Category.addCategory(name,index).then(results=>{
+			req.insertId = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

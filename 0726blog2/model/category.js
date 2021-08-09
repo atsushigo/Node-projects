@@ -38,4 +38,19 @@ module.exports = class Category extends require('./model'){
 			})
 		})
 	}
+	
+	//種類管理頁
+	//新增種類 ()
+	static addCategory(name,index){
+		return new Promise((resolve,reject)=>{
+			let sql = "INSERT INTO category (`name`,`index`) VALUES (?,?)"
+			this.query(sql,[name,index]).then(results=>{
+				resolve(results.insertId)
+			}).catch(err=>{
+				console.log("新增種類失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
+	
 }

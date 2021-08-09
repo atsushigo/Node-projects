@@ -11,4 +11,11 @@ categoryApp.get("/",category.getCategory,(req,res)=>{
 	})
 })
 
+//種類管理頁 新增種類
+categoryApp.post("/add",category.addCategory,(req,res)=>{
+	let {insertId,user} = req
+	if(insertId > 0) return res.json({code:1,message:"添加成功"})
+	res.json({code:0,message:"添加失敗"})
+})
+
 module.exports = categoryApp
