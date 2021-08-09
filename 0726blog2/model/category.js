@@ -53,4 +53,16 @@ module.exports = class Category extends require('./model'){
 		})
 	}
 	
+	//刪除單一筆種類
+	static delCategory(id){
+		return new Promise((resolve,reject)=>{
+			let sql = "DELETE FROM category WHERE id = ?"
+			this.query(sql,id).then(results=>{
+				resolve(results.affectedRows)
+			}).catch(err=>{
+				console.log("刪除單一筆種類失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

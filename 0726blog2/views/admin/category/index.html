@@ -121,7 +121,7 @@
 				 },2000)
 			},
 			del(id){
-				axios.get("/admin/article/del?id="+id).then()
+				axios.get("/admin/category/del?id="+id).then()
 				//數據庫異步操作要花時間重整，數據才會正確
 				setTimeout(()=>{
 					location.reload()

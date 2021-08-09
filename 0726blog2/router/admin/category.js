@@ -18,4 +18,11 @@ categoryApp.post("/add",category.addCategory,(req,res)=>{
 	res.json({code:0,message:"添加失敗"})
 })
 
+//種類管理頁 刪除種類
+categoryApp.get("/del",category.delCategory,(req,res)=>{
+	let { affectedRows } = req
+	if(affectedRows > 0) return res.json({code:1,message:"刪除成功"})
+	res.json({code:0,message:"刪除失敗"})
+})
+
 module.exports = categoryApp
