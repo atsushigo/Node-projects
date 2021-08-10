@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody>
 										
-                                        <tr v-for="(category,index) in categories" :key="key">
+                                        <tr v-for="(category,index) in categories" :key="index">
                                             <th>{{category.id}}</th>
                                             <td title="雙擊修改"><input type="text" name="name" @change="edit(categories[index].id,categories[index].name,categories[index].index)" v-model="categories[index].name"
                                                     class="form-control text-center bg-white border-0 dbcedit">
