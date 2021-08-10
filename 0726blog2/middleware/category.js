@@ -60,4 +60,17 @@ module.exports = {
 			next(err)
 		})
 	},
+	
+	//編輯單一種類
+	editCategory:(req,res,next)=>{
+		//get過來的id
+		let { name,index,id } = req.body
+		Category.editCategory(name,index,id).then(results=>{
+			req.affectedRows = results
+			next()
+		}).catch(err=>{
+			//把錯誤用到index去接收
+			next(err)
+		})
+	},
 }

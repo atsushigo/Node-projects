@@ -65,4 +65,18 @@ module.exports = class Category extends require('./model'){
 			})
 		})
 	}
+	
+	//編輯單一筆種類
+	static editCategory(name,index,id){
+		return new Promise((resolve,reject)=>{
+			// index 字詞是SQL關鍵語句 ``
+			let sql = "UPDATE category SET name = ?, `index` = ? WHERE id = ?"
+			this.query(sql,[name,index,id]).then(results=>{
+				resolve(results.affectedRows)
+			}).catch(err=>{
+				console.log("編輯單一筆種類失敗:"+err.message)
+				reject(err)
+			})
+		})
+	}
 }

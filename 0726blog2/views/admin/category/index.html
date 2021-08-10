@@ -39,13 +39,13 @@
                                     </thead>
                                     <tbody>
 										
-                                        <tr v-for="(category,key) in categories" :key="key">
+                                        <tr v-for="(category,index) in categories" :key="key">
                                             <th>{{category.id}}</th>
-                                            <td title="雙擊修改"><input type="text" name="name" :value="category.name"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
+                                            <td title="雙擊修改"><input type="text" name="name" @change="edit(categories[index].id,categories[index].name,categories[index].index)" v-model="categories[index].name"
+                                                    class="form-control text-center bg-white border-0 dbcedit">
                                             </td>
-                                            <td title="雙擊修改"><input type="text" name="index" :value="category.index"
-                                                    class="form-control text-center bg-white border-0 dbcedit" disabled>
+                                            <td title="雙擊修改"><input type="text" name="index" @change="edit(categories[index].id,categories[index].name,categories[index].index)" v-model="categories[index].index"
+                                                    class="form-control text-center bg-white border-0 dbcedit">
                                             </td>
                                             <td>
                                                 <button class="btn btn-link text-danger" @click="del(category.id)"><i class="iconfont icon-delete"></i>刪除</button>
@@ -75,7 +75,7 @@
     </div>
 </div>	
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
@@ -114,6 +114,7 @@
 		methods: {
 			save:function(name,index){
 				// alert(this.name+"+"+this.index)
+				////這邊需要this v-model從data拿參數
 				 axios.post("/admin/category/add",{name:this.name,index:this.index}).then(res=>alert(res.data.message))
 				 //數據庫異步操作要花時間重整，數據才會正確
 				 setTimeout(()=>{
@@ -126,7 +127,16 @@
 				setTimeout(()=>{
 					location.reload()
 				},2000)
-			}
+			},
+			edit:function(id,name,index){
+				//這邊不需要this 可直接拿參數
+				//alert(id+"+"+name+"+"+index)
+				 axios.post("/admin/category/setnameandindex",{id:id,name:name,index:index}).then(res=>alert(res.data.message))
+				 // 數據庫異步操作要花時間重整，數據才會正確
+				 setTimeout(()=>{
+				 	location.reload()
+				 },2000)
+			},
 		},
 		mounted() {
 			
