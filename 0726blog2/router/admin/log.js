@@ -6,7 +6,7 @@ const log = require("../../middleware/log.js")
 logApp.get("/",log.getCount,(req,res,next)=>{
 	
 	let page = {
-		p:req.query.p?req.query.p : 1,
+		p:req.query.p?parseInt(req.query.p) : 1,
 		count:req.count,
 		size:5,
 	}
@@ -19,7 +19,6 @@ logApp.get("/",log.getCount,(req,res,next)=>{
 	next()
 	
 },log.getPage,(req,res)=>{
-	console.log(req.page)
 	res.render("admin/log/index",{
 		user:req.user,
 		page:req.page
