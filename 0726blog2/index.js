@@ -18,6 +18,8 @@ app.set("view engine","html")
 app.set("views")
 app.engine("html",require("ejs").renderFile)
 
+//設置proxy 以方便log記錄ip
+app.set('trust proxy', true)
 //配置session
 app.use(session({
 	keys:["我是加密字串"],

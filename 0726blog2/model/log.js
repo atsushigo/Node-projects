@@ -26,4 +26,17 @@ module.exports = class Log extends require('./model'){
 			})
 		})
 	}
+	
+	//添加日誌
+	static add(log){
+		return new Promise((resolve,reject)=>{
+		let sql = "INSERT INTO log SET ?"
+		this.query(sql,log).then(results=>{
+			resolve(results.affectedRows)
+		}).catch(err=>{
+			console.log("添加日誌失敗"+err.message)
+			reject(err)
+			})
+		})
+	}
 }
