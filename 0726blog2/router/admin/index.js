@@ -21,7 +21,7 @@ indexApp.get('/',[user.lastLoginTime,pv.getTotal,article.countTotalArticle,categ
 indexApp.get("/getdata",pv.getVisitTrend,(req,res)=>{
 	let {visitTrend} = req
 	let data = {}
-	data.data = visitTrend
+	data = visitTrend
 	res.json(data)
 })
 

@@ -8,7 +8,7 @@ module.exports = class PV extends require('./model'){
 				//這邊可以console.log(results) 和 console.log(results[0]) 看差別 [] 和 undefined
 				resolve(results[0].total)
 			}).catch(err=>{
-				console.log("獲取訪問量失敗")
+				console.log("獲取總訪問量失敗")
 				reject(err)
 			})
 		})

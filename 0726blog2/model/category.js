@@ -7,7 +7,7 @@ module.exports = class Category extends require('./model'){
 			this.query(sql).then(results=>{
 				resolve(results)
 			}).catch(err=>{
-				console.log("獲取文章種類失敗:"+err.message)
+				console.log("獲取文章種類列表失敗:"+err.message)
 				reject(err)
 			})
 		})

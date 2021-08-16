@@ -33,7 +33,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,id).then(results=>{
 				resolve(results)
 			}).catch(err=>{
-				console.log("獲取文章列表失敗:"+err.message)
+				console.log("獲取部分種類文章列表失敗:"+err.message)
 				reject(err)
 			})
 		})
@@ -46,7 +46,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,"%"+keyword+"%").then(results=>{
 				resolve(results)
 			}).catch(err=>{
-				console.log("獲取文章列表失敗:"+err.message)
+				console.log("獲取指定關鍵詞的文章列表失敗:"+err.message)
 				reject(err)
 			})
 		})
@@ -59,7 +59,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,id).then(results=>{
 				resolve(results[0])
 			}).catch(err=>{
-				console.log("獲取指定文章失敗:"+err.message)
+				console.log("獲取指定文章頁面詳情:"+err.message)
 				reject(err)
 			})
 		})
@@ -72,7 +72,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,id).then(results=>{
 				resolve(results[0])
 			}).catch(err=>{
-				console.log("獲取文章列表失敗:"+err.message)
+				console.log("獲取上一篇文章頁面詳情失敗:"+err.message)
 				reject(err)
 			})
 		})
@@ -85,7 +85,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,id).then(results=>{
 				resolve(results[0])
 			}).catch(err=>{
-				console.log("獲取文章列表失敗:"+err.message)
+				console.log("獲取下一篇文章頁面詳情失敗:"+err.message)
 				reject(err)
 			})
 		})
@@ -135,7 +135,7 @@ module.exports = class Article extends require('./model'){
 				console.log(results)
 				resolve(results)
 			}).catch(err=>{
-				console.log("獲取總文章數失敗:"+err.message)
+				console.log("獲取後台文章列表指定頁失敗:"+err.message)
 				reject(err)
 			})
 		})
@@ -148,7 +148,7 @@ module.exports = class Article extends require('./model'){
 			this.query(sql,[hot,id]).then(results=>{
 				resolve(results)
 			}).catch(err=>{
-				console.log("獲取熱門失敗:"+err.message)
+				console.log("設定熱門失敗:"+err.message)
 				reject(err)
 			})
 		})

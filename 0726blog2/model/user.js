@@ -1,4 +1,5 @@
 module.exports = class User extends require('./model'){
+	//登入驗證
 	static login(username,password){
 		return new Promise((resolve,reject)=>{
 			let sql = "SELECT id,username FROM `user` WHERE username = ? AND `password` = ?"
@@ -11,7 +12,7 @@ module.exports = class User extends require('./model'){
 			})
 		})
 	}
-	//取用戶最後一次登入的時間
+	//獲取用戶最後一次登入時間
 	static lastLoginTime(){
 		return new Promise((resolve,reject)=>{
 			let sql = 'SELECT time FROM log WHERE handle = "登入" ORDER BY time DESC LIMIT 1'
@@ -20,7 +21,7 @@ module.exports = class User extends require('./model'){
 				//results長這樣 RowDataPacket { time: 2021-07-21T14:00:15.000Z }
 				resolve(results[0].time)
 			}).catch(err=>{
-				console.log("獲取log數據失敗")
+				console.log("獲取用戶最後一次登入時間失敗")
 				reject(err)
 			})
 		})

@@ -30,15 +30,15 @@
                                 <form action="/article/add" type="">
                                     <div class="form-row">
                                         <label for="title" class="col-2 text-center col-form-label">登入帳號：</label>
-                                        <input type="text" class="col-8 form-control" name="title" id="title" value="admin" required>
+                                        <input type="text" class="col-8 form-control" name="title" id="title" value="admin" required disabled>
                                     </div>
                                     <div class="form-row mt-3">
                                         <label for="category_id" class="col-2 text-center col-form-label">登入密碼：</label>
-                                        <input type="password" class="col-8 form-control" name="title" id="title" value="admin" required>
+                                        <input type="password" class="col-8 form-control" name="title" id="password" value="admin" required>
                                     </div>
                                     <div class="form-row mt-3">
                                         <label for="category_id" class="col-2 text-center col-form-label">確認密碼：</label>
-                                        <input type="password" class="col-8 form-control" name="title" id="title" value="admin" required>
+                                        <input type="password" class="col-8 form-control" name="title" id="checkPassword" value="admin" required>
                                     </div>
                                     <div class="form-row mt-3">
                                         <label for="content" class="col-2 text-center col-form-label">網站logo：</label>
@@ -76,6 +76,25 @@
     <script src="../static/ueditor/ueditor.config.js"></script>
     <script src="../static//ueditor/ueditor.all.min.js"></script>
     <script src="../static/js/public.js"></script>
+	<!-- vue axios -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<!-- 導入AXIOS -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+					el: '#app',
+					data: () => ({
+						password:"",
+						checkPassword:""
+					}),
+					methods: {
+						update(){
+							// if(password !== checkPassword) 
+						}
+					},
+	
+				})
+	</script>
 </body>
 
 </html>
